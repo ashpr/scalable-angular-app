@@ -22,8 +22,8 @@ module.exports = function (config) {
       port: 9876,
       colors: true,
       logLevel: config.LOG_INFO,
-      autoWatch: process.env.CI !== 'true',
+      autoWatch: true,
       browsers: ['ChromeHeadless'],
-      singleRun: false
+      singleRun: process.env.CI !== 'true'
     });
   };
