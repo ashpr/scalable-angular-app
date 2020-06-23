@@ -1,3 +1,5 @@
+var isCi = process.env.CI === 'true'
+
 module.exports = function (config) {
     config.set({
       basePath: '',
@@ -22,8 +24,8 @@ module.exports = function (config) {
       port: 9876,
       colors: true,
       logLevel: config.LOG_INFO,
-      autoWatch: true,
+      autoWatch: !isCi,
       browsers: ['ChromeHeadless'],
-      singleRun: process.env.CI !== 'true'
+      singleRun: isCi
     });
   };
