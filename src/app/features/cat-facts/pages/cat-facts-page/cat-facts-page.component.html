@@ -1,0 +1,6 @@
+<div *ngIf="catFacts$ | async as catFacts; else loading">
+    <app-cat-facts-list [catFacts]="catFacts"></app-cat-facts-list>
+</div>
+<ng-template #loading>
+    Loading...
+</ng-template>

@@ -1,0 +1,8 @@
+{
+    "CatFacts": {
+        "API": "https://cat-fact.herokuapp.com"
+    },
+    "DogPics": {
+        "API": "https://dog.ceo/api"
+    }
+}
