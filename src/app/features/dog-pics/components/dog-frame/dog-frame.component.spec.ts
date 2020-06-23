@@ -1,25 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { DogFrameComponent } from './dog-frame.component';
 
 describe('DogFrameComponent', () => {
-  let component: DogFrameComponent;
-  let fixture: ComponentFixture<DogFrameComponent>;
+  let spectator: Spectator<DogFrameComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DogFrameComponent ]
-    })
-    .compileComponents();
-  }));
+  const createComponent = createComponentFactory(DogFrameComponent);
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DogFrameComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent()
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should build', () => {
+    expect(spectator.component).not.toBeUndefined();
   });
 });

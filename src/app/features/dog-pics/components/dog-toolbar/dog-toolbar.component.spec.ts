@@ -1,25 +1,30 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { DogToolbarComponent } from './dog-toolbar.component';
 
 describe('DogToolbarComponent', () => {
-  let component: DogToolbarComponent;
-  let fixture: ComponentFixture<DogToolbarComponent>;
+  let spectator: Spectator<DogToolbarComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DogToolbarComponent ]
-    })
-    .compileComponents();
-  }));
+  let newDogPicSpy: jasmine.Spy;
+
+  const createComponent = createComponentFactory(DogToolbarComponent);
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DogToolbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent()
+
+    spectator.output('newDogPic').subscribe(newDogPicSpy = jasmine.createSpy());
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should build', () => {
+    expect(spectator.component).not.toBeUndefined();
+  });
+
+  describe('when user clicks button', () => {
+    beforeEach(() => {
+      spectator.click('button');
+    });
+
+    it('should emit newDogPic', () => {
+      expect(newDogPicSpy).toHaveBeenCalled();
+    });
   });
 });

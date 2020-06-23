@@ -1,3 +1,8 @@
 <app-dog-toolbar (newDogPic)="refresh()"></app-dog-toolbar>
-<app-dog-frame [dogPicSrc]="dogPicUrl$ | async"></app-dog-frame>
+<div *ngIf="dogPicUrl$ | async as dogPic; else loading">
+    <app-dog-frame [dogPicSrc]="dogPic"></app-dog-frame>
+</div>
+<ng-template #loading>
+    Loading...
+</ng-template>
 <app-dog-breeds-list></app-dog-breeds-list>

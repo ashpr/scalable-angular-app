@@ -1,3 +1,3 @@
 export interface DogBreedsDict {
-    [key: string]: string
+    [key: string]: string[]
 }

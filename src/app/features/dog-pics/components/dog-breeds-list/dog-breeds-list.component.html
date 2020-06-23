@@ -1,5 +1,7 @@
 <h4>Dog Breeds!</h4>
-<div *ngFor="let row of dogBreeds | keyvalue">
-    <span>{{row.key}}</span>
-    <span>{{row.value}}</span>
+<div
+    *ngFor="let row of dogBreeds | keyvalue"
+    class="dog-breeds-list__row">
+    <span class="dog-breeds-list__row-key">{{row.key}}</span>
+    <span class="dog-breeds-list__row-value">{{row.value}}</span>
 </div>

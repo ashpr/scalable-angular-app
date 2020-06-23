@@ -1,8 +1,8 @@
-import { APP_INITIALIZER, Provider } from '@angular/core';
+import { APP_INITIALIZER, FactoryProvider } from '@angular/core';
 import { DogBreedsCacheService } from '../services/dog-breeds-cache.service';
 import { DogPicApiService } from '../services/dog-pic-api.service';
 
-export function dogBreedsInitializerFactory(dogPicApiService: DogPicApiService, dogBreedsCacheService: DogBreedsCacheService) {
+function dogBreedsInitializerFactory(dogPicApiService: DogPicApiService, dogBreedsCacheService: DogBreedsCacheService) {
     return async () => {
         const breeds = await dogPicApiService.getBreeds().toPromise();
 
@@ -10,9 +10,9 @@ export function dogBreedsInitializerFactory(dogPicApiService: DogPicApiService, 
     }
 }
 
-export const dogBreedsInitializerProvider: Provider = {
+export const dogBreedsInitializerProvider: FactoryProvider = {
     provide: APP_INITIALIZER,
     useFactory: dogBreedsInitializerFactory,
     multi: true,
     deps: [DogPicApiService, DogBreedsCacheService]
-  }
+}

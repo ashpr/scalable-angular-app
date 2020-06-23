@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { CatFactsApiService } from '../../services/cat-facts-api.service';
+import { Component } from '@angular/core';
 import { pluck } from 'rxjs/operators';
+import { CatFactsApiService } from '../../services/cat-facts-api.service';
 
 @Component({
   selector: 'app-cat-facts-page',
@@ -9,8 +9,7 @@ import { pluck } from 'rxjs/operators';
 })
 export class CatFactsPageComponent {
 
-  public readonly catFacts$ = this.catFactsApiService.getCatFacts()
-    .pipe(pluck('all'));
+  public readonly catFacts$ = this.catFactsApiService.getCatFacts();
 
   constructor(
     private catFactsApiService: CatFactsApiService
